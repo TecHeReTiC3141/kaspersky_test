@@ -1,16 +1,18 @@
 import express, { Request, Response } from 'express';
 import cors from "cors";
+import { v4 as uuidv4 } from 'uuid';
 
 const app = express();
 app.use(cors());
 const port = 3000;
 
 interface Employee {
+    id: string;
     name: string;
     accountName: string;
     email: string;
     group?: string;
-    telephone: string;
+    phoneNumber: string;
 }
 
 // Список доступных групп
@@ -24,11 +26,12 @@ function generateRandomEmployees(count: number): Employee[] {
     const employees: Employee[] = [];
     for (let i = 0; i < count; i++) {
         employees.push({
+            id: uuidv4(),
             name: `Employee ${i + 1}`,
             accountName: `account${i + 1}`,
             email: `employee${i + 1}@company.com`,
             group: availableGroups[Math.floor(Math.random() * availableGroups.length)],
-            telephone: `+123456789${String(i).padStart(4, '0')}`
+            phoneNumber: `+123456789${String(i).padStart(4, '0')}`
         });
     }
     return employees;
