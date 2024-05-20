@@ -1,6 +1,8 @@
 import express, { Request, Response } from 'express';
 import cors from "cors";
 import { v4 as uuidv4 } from 'uuid';
+import { faker } from '@faker-js/faker';
+
 
 const app = express();
 app.use(cors());
@@ -12,13 +14,22 @@ interface Employee {
     accountName: string;
     email: string;
     group?: string;
+    position: string;
     phoneNumber: string;
 }
 
 // Список доступных групп
 const availableGroups: string[] = [
-    'Group 1', 'Group 2', 'Group 3', 'Group 4', 'Group 5',
-    'Group 6', 'Group 7', 'Group 8', 'Group 9', 'Group 10'
+    'Frontend Developers',
+    'Backend Developers',
+    'DevOps',
+    'QA Engineers',
+    'Designers',
+    'Project Managers',
+    'Product Owners',
+    'HR',
+    'Marketing',
+    'Support'
 ];
 
 // Функция для генерации случайных данных сотрудников
@@ -27,11 +38,12 @@ function generateRandomEmployees(count: number): Employee[] {
     for (let i = 0; i < count; i++) {
         employees.push({
             id: uuidv4(),
-            name: `Employee ${i + 1}`,
-            accountName: `account${i + 1}`,
-            email: `employee${i + 1}@company.com`,
-            group: availableGroups[Math.floor(Math.random() * availableGroups.length)],
-            phoneNumber: `+123456789${String(i).padStart(4, '0')}`
+            name: faker.person.fullName(),
+            accountName: faker.internet.userName(),
+            email: faker.internet.email(),
+            group: availableGroups[ Math.floor(Math.random() * availableGroups.length) ],
+            position: faker.person.jobTitle(),
+            phoneNumber: faker.helpers.fromRegExp('+[0-9]{3}([0-9]{3})[0-9]{3}-[0-9]{2}-[0-9]{2}'),
         });
     }
     return employees;
