@@ -1,17 +1,12 @@
-import { Employee } from "../../DashboardPage.tsx";
 import clsx from "clsx";
+import { EntryProps } from "./Props.ts";
 
-interface TableEntryProps {
-    employee: Employee,
-    isSelected: boolean,
-    setIsSelected: (value: (((prevState: { [ k: string ]: boolean }) => { [ k: string ]: boolean }) | { [ k: string ]: boolean })) => void,
-}
-
-export default function TableEntry({ employee, isSelected, setIsSelected }: TableEntryProps) {
+export default function TableEntry({ employee, isSelected, setIsSelected }: EntryProps) {
 
     return (
-        <tr key={employee.id} className={clsx(isSelected ? "bg-yellow-300" : "odd:bg-gray-100")}>
-            <td className=""><input className="mx-auto block" type="checkbox" checked={isSelected} onChange={event => {
+        <tr key={employee.id} className={clsx(isSelected ? "bg-blue-200 even:bg-blue-300" : "odd:bg-gray-100")}>
+            <td className=""><input className="mx-auto block" type="checkbox"
+                                    checked={isSelected} onChange={event => {
                 const check = event.currentTarget?.checked;
                 console.log(event.currentTarget, event.currentTarget?.checked);
                 setIsSelected(prev => ({

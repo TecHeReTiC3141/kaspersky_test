@@ -8,12 +8,17 @@ import ErrorPage from "./ErrorPage.tsx";
 import Layout from "./Layout.tsx";
 import DashboardPage from "./DashboardPage.tsx";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import EmployeeDataProvider from "./EmployeeContext.tsx";
 
 const router = createBrowserRouter(createRoutesFromElements(
     <>
         <Route path="/" element={<Layout/>} errorElement={<ErrorPage/>}>
             <Route index element={<HomePage/>}/>
-            <Route path="/dashboard" element={<DashboardPage/>}/>
+            <Route path="/dashboard" element={
+                <EmployeeDataProvider>
+                    <DashboardPage/>
+                </EmployeeDataProvider>
+            }/>
         </Route>
     </>
 ));

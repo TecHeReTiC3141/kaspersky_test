@@ -1,13 +1,11 @@
-import { DashboardProps } from "./DashboardProps.ts";
-import { useState } from "react";
 import TableEntry from "./TableEntry.tsx";
+import { useEmployeeData } from "../../EmployeeContext.tsx";
 
 
-export default function TableDashboard({ employees }: DashboardProps) {
+export default function TableDashboard() {
 
-    const [ selected, setSelected ] = useState<{[k: string]: boolean}>({});
+    const {employees, selected, setSelected} = useEmployeeData();
 
-    console.log(selected);
     return (
         <div className="w-full">
             <table className="w-full rounded-t-lg overflow-hidden">
