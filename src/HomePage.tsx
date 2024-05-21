@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 export default function HomePage() {
 
@@ -7,7 +8,7 @@ export default function HomePage() {
             <h2 className="mt-20 mb-10 text-5xl font-bold text-center">
                 Управляйте информацией о сотрудниках эффективно и удобно
             </h2>
-            <p className="text-center text-lg mb-6 px-12 text-blue-800 dark:text-violet-300 font-thin">
+            <p className="text-center text-lg mb-6 px-12 text-blue-800 dark:text-purple-300 font-thin">
                 Наш дашборд предоставляет вам все необходимые инструменты для управления данными сотрудников. Вы
                 можете добавлять, редактировать и просматривать информацию о сотрудниках в реальном времени.
             </p>
@@ -15,11 +16,8 @@ export default function HomePage() {
                 <Link to="/dashboard"
                       className="bg-purple-600 text-white py-4 px-3 shadow-lg tracking-wide rounded-xl hover:bg-purple-700">
                     Перейти к дашбордам
+                    <FaArrowRightLong size={24} className="ml-3 inline"/>
                 </Link>
-                <button className="border-2 bg-transparent border-purple-600 text-purple-600 tracking-wide py-3 px-3 shadow-lg
-                text-lg rounded-xl hover:bg-purple-700 hover:text-white">
-                    Как это работает
-                </button>
             </div>
 
             <div className="w-full dark:hidden">
