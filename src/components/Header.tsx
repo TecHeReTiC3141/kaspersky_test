@@ -28,7 +28,7 @@ export default function Header() {
                     links.map(({ text, to }) => (
                         <NavLink to={to}
                                  className={({ isActive }) =>
-                                     clsx("border border-gray-700 px-2 py-1 rounded-lg hover:underline text-lg hover:shadow",
+                                     clsx("border border-gray-700 dark:border-gray-400 px-2 py-1 rounded-lg hover:underline text-lg hover:shadow",
                                          isActive && "font-bold")}>
                             {text}</NavLink>
                     ))

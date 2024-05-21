@@ -22,12 +22,13 @@ export default function SelectDashboardVariant({ active, setActive }: SelectDash
     // TODO: remove animation and replace it with highlighting of active variant
 
     return (
-        <div className="flex items-center gap-x-3 px-2 py-1 border border-gray-600
+        <div className="flex items-center gap-x-3 px-2 py-1 border border-gray-600 dark:border-gray-400
             rounded-md">
             {Object.entries(variants)
                 .map(([ key, Icon ]) => (
                     <div className="border-r pr-3 border-gray-700 last:border-r-0 last:pr-0">
-                        <button className={clsx(" p-1 rounded-md", active === key ? "bg-yellow-300" : "hover:bg-blue-300")}
+                        <button className={clsx(" p-1 rounded-md", active === key ?
+                            "bg-yellow-300 dark:bg-yellow-500" : "hover:bg-blue-300 hover:dark:bg-blue-400")}
                                 disabled={active === key} onClick={() => setActive(key)}>
                             <Icon size={24}/>
                         </button>

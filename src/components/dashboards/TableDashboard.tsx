@@ -18,7 +18,7 @@ export default function TableDashboard({ employees }: DashboardProps) {
                     <col span={1} className="w-[15%]"/>
                     <col span={1} className="w-[15%]"/>
                 </colgroup>
-                <thead className="bg-slate-300 py-2">
+                <thead className="bg-slate-300 dark:bg-slate-700 py-2">
                 <tr className="text-left">
                     <th className="py-3"><input className="mx-auto block" type="checkbox" onChange={event => {
                         const check = event.currentTarget?.checked;

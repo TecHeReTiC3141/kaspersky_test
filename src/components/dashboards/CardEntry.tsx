@@ -11,7 +11,8 @@ export default function CardEntry({ employee, setIsSelected, isSelected }: Entry
 
     return (
         <div className={clsx("relative px-6 pt-8 pb-6 rounded flex flex-col items-center gap-y-3 cursor-pointer border",
-            isSelected ? "bg-blue-200 border-blue-400" : "bg-gray-300 hover:bg-gray-400/90")}
+            isSelected ? "bg-blue-200 border-blue-400 dark:bg-blue-700/50" :
+                "bg-gray-300 hover:bg-gray-400/90 dark:border-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700")}
              onClick={() => {
                  setIsSelected(prev => ({
                      ...prev,
@@ -19,20 +20,20 @@ export default function CardEntry({ employee, setIsSelected, isSelected }: Entry
                  }));
              }}>
             <h5 className="font-bold text-lg">{searchField === "name" && searchValue ? <Highlighter
-                highlightClassName="bg-yellow-400"
+                highlightClassName="bg-yellow-400 dark:bg-yellow-500"
                 searchWords={[ searchValue ]}
                 autoEscape={true}
                 textToHighlight={employee.name}
             /> : employee.name}</h5>
             <img src="/avatar_placeholder.png" alt="Avatar" className="w-28"/>
             <p>{searchField === "group" && searchValue ? <Highlighter
-                highlightClassName="bg-yellow-400"
+                highlightClassName="bg-yellow-400 dark:bg-yellow-500"
                 searchWords={[ searchValue ]}
                 autoEscape={true}
                 textToHighlight={employee.group || "Unmanaged"}
             /> : employee.group || "Unmanaged"}</p>
             <p>{searchField === "phoneNumber" && searchValue ? <Highlighter
-                highlightClassName="bg-yellow-400"
+                highlightClassName="bg-yellow-400 dark:bg-yellow-500"
                 searchWords={[ searchValue ]}
                 autoEscape={true}
                 textToHighlight={employee.phoneNumber}

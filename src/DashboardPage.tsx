@@ -111,7 +111,7 @@ export default function DashboardPage() {
     return (
         <div className="w-full">
             <div className="flex justify-between items-start mb-4 px-4 gap-x-6 max-h-[60px] sticky
-            top-0 w-full bg-gray-200 py-2 border border-t-0 rounded-md border-gray-400 z-10">
+            top-0 w-full bg-gray-200 dark:bg-gray-800 py-2 border border-t-0 rounded-md border-gray-400 z-10">
                 <SearchDropdown />
                 <SortDropdown />
                 <h4 className="text-lg font-bold mt-1.5">Всего {finalEmployees.length} сотрудников</h4>

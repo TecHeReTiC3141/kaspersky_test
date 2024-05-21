@@ -5,15 +5,16 @@ import clsx from "clsx";
 
 export default function SortDropdown() {
 
-    const {setSortedField, sortedField, isSortAscending, setIsSortAscending} = useEmployeeData();
+    const { setSortedField, sortedField, isSortAscending, setIsSortAscending } = useEmployeeData();
     return (
         <div
-            className="w-56 overflow-y-hidden transition-all duration-200 border border-gray-500 rounded-md
-                        h-11 hover:h-48 text-center z-10 bg-gray-200 pt-1.5 flex flex-col gap-y-3 items-center">
+            className="w-56 border border-gray-500 rounded-md overflow-y-hidden transition-all duration-200
+                        h-11 hover:h-48 text-center z-10 bg-gray-200 dark:bg-gray-800 pt-1.5 flex flex-col gap-y-3 items-center">
             <h5 className="text-lg font-bold flex items-center gap-x-2">Сортировка <FaSort size={24}/></h5>
             <label htmlFor="sortedField" className="block">
                 <p>Поле сортировки:</p>
-                <select name="sortedField" id="sortedField" className="mt-2" value={sortedField || "none"}
+                <select name="sortedField" id="sortedField" className="mt-2 dark:bg-gray-600 focus:outline-none"
+                        value={sortedField || "none"}
                         onChange={event => {
                             const newValue = event.currentTarget.value === "none" ? null : event.currentTarget.value;
                             setSortedField(newValue as keyof Employee);

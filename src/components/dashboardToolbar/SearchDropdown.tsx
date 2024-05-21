@@ -7,13 +7,14 @@ export default function SearchDropdown() {
     return (
         <div
             className="w-56 border border-gray-500 rounded-md overflow-y-hidden transition-all duration-200
-                        h-11 hover:h-48 text-center z-10 bg-gray-200 pt-1.5 flex flex-col gap-y-3 items-center">
+                        h-11 hover:h-48 text-center z-10 bg-gray-200 dark:bg-gray-800 pt-1.5 flex flex-col gap-y-3 items-center">
             <h5 className="text-lg font-bold flex items-center gap-x-2">
-                Поиск <FaMagnifyingGlass size={24} className="text-gray-600"/>
+                Поиск <FaMagnifyingGlass size={24}/>
             </h5>
             <label htmlFor="searchField" className="block">
                 <p>Поле поиска:</p>
-                <select name="searchField" id="searchField" className="mt-2" value={searchField || "none"}
+                <select name="searchField" id="searchField"
+                        className="mt-2 dark:bg-gray-600 focus:outline-none" value={searchField || "none"}
                         onChange={event => {
                             const newValue = event.currentTarget.value === "none" ? null : event.currentTarget.value;
                             setSearchField(newValue as keyof Employee);

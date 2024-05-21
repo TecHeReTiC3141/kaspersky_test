@@ -13,7 +13,8 @@ export default function HomePage() {
                 можете добавлять, редактировать и просматривать информацию о сотрудниках в реальном времени.
             </p>
             <div className="flex justify-center space-x-5 items-start">
-                <Link to="/dashboard" className="bg-purple-600 text-white py-4 px-3 shadow-lg tracking-wide rounded-xl hover:bg-purple-700">
+                <Link to="/dashboard"
+                      className="bg-purple-600 text-white py-4 px-3 shadow-lg tracking-wide rounded-xl hover:bg-purple-700">
                     Перейти к дашбордам
                 </Link>
                 <button className="border-2 bg-transparent border-purple-600 text-purple-600 tracking-wide py-3 px-3 shadow-lg
@@ -21,7 +22,15 @@ export default function HomePage() {
                     Как это работает
                 </button>
             </div>
-            <img src="/landing_screen.png" alt="Landing screen" className="mt-8 shadow-lg border border-gray-300 rounded-lg"/>
+
+            <div className="w-full dark:hidden">
+                <img src="/landing_screen.png" alt="Landing screen"
+                     className="mt-8 shadow-lg border border-gray-300 rounded-lg"/>
+            </div>
+            <div className="w-full hidden dark:block">
+                <img src="/landing_screen_dark.png" alt="Landing screen"
+                     className="mt-8 shadow-lg border border-gray-300 rounded-lg"/>
+            </div>
         </main>
     )
 }
