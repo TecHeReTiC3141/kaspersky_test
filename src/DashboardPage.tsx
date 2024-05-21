@@ -114,7 +114,7 @@ export default function DashboardPage() {
             top-0 w-full bg-gray-200 py-2 border border-t-0 rounded-md border-gray-400 z-10">
                 <SearchDropdown />
                 <SortDropdown />
-                <h4 className="text-lg font-bold mt-1.5">Всего {finalEmployees.length} работников</h4>
+                <h4 className="text-lg font-bold mt-1.5">Всего {finalEmployees.length} сотрудников</h4>
                 <div className="flex-1"></div>
                 <SelectDashboardVariant active={activeVariant} setActive={setActiveVariant}/>
             </div>
