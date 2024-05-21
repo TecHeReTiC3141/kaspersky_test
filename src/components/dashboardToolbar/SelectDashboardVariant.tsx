@@ -1,4 +1,4 @@
-import { dashboardVariants } from "../DashboardPage.tsx";
+import { dashboardVariants } from "../../DashboardPage.tsx";
 import { IconType } from "react-icons";
 import { BsTable } from "react-icons/bs";
 import { BsHddStack } from "react-icons/bs";
