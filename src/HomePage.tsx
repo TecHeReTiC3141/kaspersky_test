@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 
 export default function HomePage() {
 
-    // TODO: create proper home page
     return (
         <main className="flex flex-col items-center justify-center flex-grow max-w-5xl mx-auto">
             <h2 className="mt-20 mb-10 text-5xl font-bold text-center">
