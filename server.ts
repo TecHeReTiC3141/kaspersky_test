@@ -13,7 +13,7 @@ interface Employee {
     name: string;
     accountName: string;
     email: string;
-    group?: string;
+    group: string | null;
     position: string;
     phoneNumber: string;
 }
@@ -41,7 +41,7 @@ function generateRandomEmployees(count: number): Employee[] {
             name: faker.person.fullName(),
             accountName: faker.internet.userName(),
             email: faker.internet.email(),
-            group: availableGroups[ Math.floor(Math.random() * availableGroups.length) ],
+            group: Math.random() * 10 < 3 ? null : availableGroups[ Math.floor(Math.random() * availableGroups.length) ],
             position: faker.person.jobTitle(),
             phoneNumber: faker.helpers.fromRegExp('+[0-9]{3}([0-9]{3})[0-9]{3}-[0-9]{2}-[0-9]{2}'),
         });

@@ -26,12 +26,14 @@ export default function CardEntry({ employee, setIsSelected, isSelected }: Entry
                 textToHighlight={employee.name}
             /> : employee.name}</h5>
             <img src="/avatar_placeholder.png" alt="Avatar" className="w-28"/>
-            <p>{searchField === "group" && searchValue ? <Highlighter
-                highlightClassName="bg-yellow-400 dark:bg-yellow-500"
-                searchWords={[ searchValue ]}
-                autoEscape={true}
-                textToHighlight={employee.group || "Unmanaged"}
-            /> : employee.group || "Unmanaged"}</p>
+            <p className={clsx("py-2", employee.group === null && "font-bold")}>
+                {searchField === "group" && searchValue ?
+                    <Highlighter
+                        highlightClassName="bg-yellow-400 dark:bg-yellow-500"
+                        searchWords={[ searchValue ]}
+                        autoEscape={true}
+                        textToHighlight={employee.group || "Unmanaged"}
+                    /> : employee.group || "Unmanaged"}</p>
             <p>{searchField === "phoneNumber" && searchValue ? <Highlighter
                 highlightClassName="bg-yellow-400 dark:bg-yellow-500"
                 searchWords={[ searchValue ]}

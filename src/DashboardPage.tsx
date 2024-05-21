@@ -21,6 +21,7 @@ export default function DashboardPage() {
 
     const [ activeVariant, setActiveVariant ] = useState<keyof typeof dashboardVariants>("table");
 
+    console.log(import.meta.env.VITE_SERVER_BASE_URL, import.meta.env);
     // TODO: add localization for Russian and English
 
     const {
@@ -37,7 +38,7 @@ export default function DashboardPage() {
         queryKey: [ "groups" ],
 
         queryFn: async () => {
-            const response = await fetch("http://localhost:3000/groups", {
+            const response = await fetch(`${import.meta.env.VITE_SERVER_BASE_URL}/groups`, {
                 headers: {
                     'Access-Control-Allow-Origin': '*',
                 }
@@ -56,7 +57,7 @@ export default function DashboardPage() {
     const employeesQuery = useQuery<Employee[]>({
         queryKey: [ "employees" ],
         queryFn: async () => {
-            const response = await fetch("http://localhost:3000/employees", {
+            const response = await fetch(`${import.meta.env.VITE_SERVER_BASE_URL}/employees`, {
                 headers: {
                     'Access-Control-Allow-Origin': '*',
                 }

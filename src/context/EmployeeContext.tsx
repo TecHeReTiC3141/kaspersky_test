@@ -5,7 +5,7 @@ export interface Employee {
     name: string;
     accountName: string;
     email: string;
-    group?: string;
+    group: string | null;
     position: string;
     phoneNumber: string;
 }

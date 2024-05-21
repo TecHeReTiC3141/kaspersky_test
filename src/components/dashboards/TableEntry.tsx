@@ -37,12 +37,14 @@ export default function TableEntry({ employee, isSelected, setIsSelected }: Entr
                 autoEscape={true}
                 textToHighlight={employee.email}
             /> : employee.email}</td>
-            <td className="py-2">{searchField === "group" && searchValue ? <Highlighter
-                highlightClassName="bg-yellow-400 dark:bg-yellow-500"
-                searchWords={[ searchValue ]}
-                autoEscape={true}
-                textToHighlight={employee.group || "Unmanaged"}
-            /> : employee.group || "Unmanaged"}</td>
+            <td className={clsx("py-2", employee.group === null && "font-bold")}>
+                {searchField === "group" && searchValue ?
+                    <Highlighter
+                        highlightClassName="bg-yellow-400 dark:bg-yellow-500"
+                        searchWords={[ searchValue ]}
+                        autoEscape={true}
+                        textToHighlight={employee.group || "Unmanaged"}
+                    /> : employee.group || "Unmanaged"}</td>
             <td className="py-2">{searchField === "phoneNumber" && searchValue ? <Highlighter
                 highlightClassName="bg-yellow-400 dark:bg-yellow-500"
                 searchWords={[ searchValue ]}

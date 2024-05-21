@@ -19,8 +19,6 @@ interface SelectDashboardVariantProps {
 
 export default function SelectDashboardVariant({ active, setActive }: SelectDashboardVariantProps) {
 
-    // TODO: remove animation and replace it with highlighting of active variant
-
     return (
         <div className="flex items-center gap-x-3 px-2 py-1 border border-gray-600 dark:border-gray-400
             rounded-md">
