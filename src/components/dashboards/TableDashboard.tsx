@@ -1,10 +1,12 @@
 import TableEntry from "./TableEntry.tsx";
-import { useEmployeeData } from "../../EmployeeContext.tsx";
+import { useEmployeeData } from "../../context/EmployeeContext.tsx";
+import { DashboardProps } from "./Props.ts";
 
 
-export default function TableDashboard() {
+export default function TableDashboard({ employees }: DashboardProps) {
 
-    const {employees, selected, setSelected} = useEmployeeData();
+    const { selected, setSelected } = useEmployeeData();
+
 
     return (
         <div className="w-full">
@@ -18,25 +20,26 @@ export default function TableDashboard() {
                     <col span={1} className="w-[15%]"/>
                 </colgroup>
                 <thead className="bg-slate-300 py-2">
-                    <tr className="py-2 text-left">
-                        <th><input className="mx-auto block" type="checkbox" onChange={event => {
-                            const check = event.currentTarget?.checked;
-                            const newSelected: { [id: string]: boolean } = {};
-                            employees.forEach(employee => {
-                                newSelected[ employee.id ] = check;
-                            });
-                            setSelected(newSelected);
-                        }}/></th>
-                        <th>Полное имя</th>
-                        <th>Учетная запись</th>
-                        <th>Электронная почта</th>
-                        <th>Группа</th>
-                        <th>Номер телефона</th>
-                    </tr>
+                <tr className="text-left">
+                    <th className="py-3"><input className="mx-auto block" type="checkbox" onChange={event => {
+                        const check = event.currentTarget?.checked;
+                        const newSelected: { [ id: string ]: boolean } = {};
+                        employees.forEach(employee => {
+                            newSelected[ employee.id ] = check;
+                        });
+                        setSelected(newSelected);
+                    }}/></th>
+                    <th className="py-3">Полное имя</th>
+                    <th className="py-3">Учетная запись</th>
+                    <th className="py-3">Электронная почта</th>
+                    <th className="py-3">Группа</th>
+                    <th className="py-3">Номер телефона</th>
+                </tr>
                 </thead>
                 <tbody>
                 {employees.map(employee => (
-                    <TableEntry key={employee.id} employee={employee} isSelected={selected[employee.id] || false} setIsSelected={setSelected} />
+                    <TableEntry key={employee.id} employee={employee} isSelected={selected[ employee.id ] || false}
+                                setIsSelected={setSelected}/>
                 ))}
                 </tbody>
             </table>

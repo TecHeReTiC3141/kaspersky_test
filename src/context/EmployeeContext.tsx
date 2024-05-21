@@ -17,16 +17,19 @@ export interface EmployeeDataContextValue {
     setEmployees: (value: (((prevState: Employee[]) => Employee[]) | Employee[])) => void,
     selected: {[k: string]: boolean},
     setSelected: (value: (((prevState: {[k: string]: boolean}) => {[k: string]: boolean}) | {[k: string]: boolean})) => void,
-    sortedField: keyof Employee | undefined,
-    setSortedField: (value: keyof Employee | undefined) => void,
+    sortedField: keyof Employee | null,
+    setSortedField: (value: keyof Employee | null) => void,
+    isSortAscending: boolean,
+    setIsSortAscending: (value: (((prevState: boolean) => boolean) | boolean)) => void,
+
 }
 
 // TODO: fix type error with initializing of context
-const EmployeeDataContext = createContext<EmployeeDataContextValue>();
+const EmployeeDataContext = createContext<EmployeeDataContextValue | Record<string, never>>({});
 
 
 export function useEmployeeData() {
-    return useContext(EmployeeDataContext);
+    return useContext(EmployeeDataContext) as EmployeeDataContextValue;
 }
 
 export default function EmployeeDataProvider({ children }: { children: ReactNode}) {
@@ -37,7 +40,8 @@ export default function EmployeeDataProvider({ children }: { children: ReactNode
 
     const [ selected, setSelected ] = useState<{[k: string]: boolean}>({});
 
-    const [ sortedField, setSortedField ] = useState<keyof Employee | undefined>();
+    const [ sortedField, setSortedField ] = useState<keyof Employee | null>(null);
+    const [ isSortAscending, setIsSortAscending ] = useState<boolean>(true);
 
     const value = {
         groups,
@@ -48,6 +52,8 @@ export default function EmployeeDataProvider({ children }: { children: ReactNode
         setSelected,
         sortedField,
         setSortedField,
+        isSortAscending,
+        setIsSortAscending,
     };
 
     return (

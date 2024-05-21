@@ -1,10 +1,11 @@
-import { useEmployeeData } from "../../EmployeeContext.tsx";
+import { useEmployeeData } from "../../context/EmployeeContext.tsx";
 import { RiTeamLine } from "react-icons/ri";
 import GroupEntry from "./GroupEntry.tsx";
+import { DashboardProps } from "./Props.ts";
 
 
-export default function GroupDashboard() {
-    const { employees, selected, setSelected, groups } = useEmployeeData();
+export default function GroupDashboard({employees}: DashboardProps) {
+    const { selected, setSelected, groups } = useEmployeeData();
 
     return (
         <div className="w-full overflow-x-auto flex items-start  gap-x-6 py-4 px-3">

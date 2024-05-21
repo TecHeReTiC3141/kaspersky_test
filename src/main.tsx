@@ -8,7 +8,7 @@ import ErrorPage from "./ErrorPage.tsx";
 import Layout from "./Layout.tsx";
 import DashboardPage from "./DashboardPage.tsx";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import EmployeeDataProvider from "./EmployeeContext.tsx";
+import EmployeeDataProvider from "./context/EmployeeContext.tsx";
 
 const router = createBrowserRouter(createRoutesFromElements(
     <>

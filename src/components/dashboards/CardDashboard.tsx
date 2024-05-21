@@ -1,10 +1,11 @@
 import CardEntry from "./CardEntry.tsx";
-import { useEmployeeData } from "../../EmployeeContext.tsx";
+import { useEmployeeData } from "../../context/EmployeeContext.tsx";
+import { DashboardProps } from "./Props.ts";
 
 
-export default function CardDashboard() {
+export default function CardDashboard({employees}: DashboardProps) {
 
-    const {employees, selected, setSelected} = useEmployeeData();
+    const {selected, setSelected} = useEmployeeData();
 
     return (
         <div className="w-full grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6 ">
