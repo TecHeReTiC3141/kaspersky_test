@@ -10,7 +10,7 @@ export default function GroupDashboard({employees}: DashboardProps) {
     return (
         <div className="w-full overflow-x-auto flex items-start  gap-x-6 py-4 px-3">
             {groups.map(group => (
-                <div className="w-72 flex-shrink-0 border border-gray-700 pt-4 pb-2 px-3">
+                <div key={group} className="w-72 flex-shrink-0 border border-gray-700 pt-4 pb-2 px-3">
                     <div className="flex justify-between items-center mb-4">
                         <h4 className="text-xl">{group}</h4>
                         <RiTeamLine size={24}/>

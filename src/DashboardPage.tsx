@@ -21,7 +21,6 @@ export default function DashboardPage() {
 
     const [ activeVariant, setActiveVariant ] = useState<keyof typeof dashboardVariants>("table");
 
-    console.log(import.meta.env.VITE_SERVER_BASE_URL, import.meta.env);
     // TODO: add localization for Russian and English
 
     const {
@@ -107,7 +106,7 @@ export default function DashboardPage() {
     }
 
     const ActiveDashboard = dashboardVariants[ activeVariant ]
-
+    // TODO: make site more responsive
     // TODO: create ToTopButton
     return (
         <div className="w-full">
@@ -115,8 +114,8 @@ export default function DashboardPage() {
             top-0 w-full bg-gray-200 dark:bg-gray-800 py-2 border border-t-0 rounded-md border-gray-400 z-10">
                 <SearchDropdown />
                 <SortDropdown />
-                <h4 className="text-lg font-bold mt-1.5">Всего {finalEmployees.length} сотрудников</h4>
-                <div className="flex-1"></div>
+                <h4 className="hidden md:block md:text-lg font-bold mt-1.5">Всего {finalEmployees.length} сотрудников</h4>
+                <div className="hidden sm:block flex-1"></div>
                 <SelectDashboardVariant active={activeVariant} setActive={setActiveVariant}/>
             </div>
             <ActiveDashboard employees={finalEmployees}/>

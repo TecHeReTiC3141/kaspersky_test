@@ -8,10 +8,10 @@ export default function TableDashboard({ employees }: DashboardProps) {
     const { selected, setSelected } = useEmployeeData();
     // TODO: think about adding column for position
     return (
-        <div className="w-full">
-            <table className="w-full rounded-t-lg overflow-hidden max-md:text-sm">
+        <div className="w-full overflow-x-auto">
+            <table className="w-full rounded-t-lg overflow-hidden max-lg:text-sm text-nowrap">
                 <colgroup>
-                    <col span={1} className="w-[5%]"/>
+                    <col span={1} className="min-w-8 w-[5%]"/>
                     <col span={1} className="w-[15%]"/>
                     <col span={1} className="w-[25%]"/>
                     <col span={1} className="w-[25%]"/>

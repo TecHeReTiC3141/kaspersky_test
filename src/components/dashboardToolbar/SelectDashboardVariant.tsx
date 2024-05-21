@@ -18,13 +18,13 @@ interface SelectDashboardVariantProps {
 }
 
 export default function SelectDashboardVariant({ active, setActive }: SelectDashboardVariantProps) {
-
+// TODO: make it more responsive
     return (
-        <div className="flex items-center gap-x-3 px-2 py-1 border border-gray-600 dark:border-gray-400
+        <div className="flex items-center gap-x-1 mdgap-x-3 px-2 py-1 border border-gray-600 dark:border-gray-400
             rounded-md">
             {Object.entries(variants)
                 .map(([ key, Icon ]) => (
-                    <div className="border-r pr-3 border-gray-700 last:border-r-0 last:pr-0">
+                    <div key={key} className="border-r pr-1 md:pr-3 border-gray-700 last:border-r-0 last:pr-0">
                         <button className={clsx(" p-1 rounded-md", active === key ?
                             "bg-yellow-300 dark:bg-yellow-500" : "hover:bg-blue-300 hover:dark:bg-blue-400")}
                                 disabled={active === key} onClick={() => setActive(key)}>
