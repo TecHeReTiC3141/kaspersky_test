@@ -41,7 +41,7 @@ export default function CardEntry({ employee, setIsSelected, isSelected }: Entry
                 textToHighlight={employee.phoneNumber}
             /> : employee.phoneNumber}</p>
 
-            <input className="absolute top-3 left-3" type="checkbox"
+            <input className="absolute top-3 left-3" type="checkbox" readOnly
                    checked={isSelected}/>
 
             <TiCloudStorage size={28} className="absolute top-1.5 right-3"/>

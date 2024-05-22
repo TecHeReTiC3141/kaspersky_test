@@ -10,6 +10,8 @@ import { DashboardProps } from "./components/dashboards/Props.ts";
 import SearchDropdown from "./components/dashboardToolbar/SearchDropdown.tsx";
 import SortDropdown from "./components/dashboardToolbar/SortDropdown.tsx";
 import ToTopButton from "./components/ToTopButton.tsx";
+import { filter, orderBy } from 'lodash';
+
 
 
 export const dashboardVariants: Record<string, React.ComponentType<DashboardProps>> = {
@@ -21,9 +23,6 @@ export const dashboardVariants: Record<string, React.ComponentType<DashboardProp
 export default function DashboardPage() {
 
     const [ activeVariant, setActiveVariant ] = useState<keyof typeof dashboardVariants>("table");
-
-    // TODO: add tests (?)
-
 
     const {
         employees,
@@ -73,20 +72,19 @@ export default function DashboardPage() {
     }, [ employeesQuery.data, setEmployees ]);
 
     const finalEmployees = useMemo(() => {
-        let temp = [ ...employees ];
-        if (searchField !== null && searchValue) {
+        // TODO: think about adding tests to this section
+        let temp = [...employees];
+
+        if (searchField && searchValue) {
             const lowerToValue = searchValue.toLowerCase();
-            temp = temp.filter(employee => employee[ searchField ]?.toLowerCase()?.includes(lowerToValue));
-        }
-        if (sortedField !== null) {
-            temp = temp.sort((emp1, emp2) => {
-                if (emp1[ sortedField ] === null) return 1;
-                if (emp2[ sortedField ] === null) return -1;
-                if (isSortAscending && emp1[ sortedField ]! < emp2[ sortedField ]!
-                    || !isSortAscending && emp1[ sortedField ]! > emp2[ sortedField ]!) return -1;
-                if (emp1[ sortedField ] === emp2[ sortedField ]) return 0;
-                return 1;
+            temp = filter(temp, (employee) => {
+                const fieldValue = employee[searchField] ?? "Unmanaged";
+                return fieldValue.toLowerCase().includes(lowerToValue);
             });
+        }
+
+        if (sortedField) {
+            temp = orderBy(temp, [sortedField], [isSortAscending ? 'asc' : 'desc']);
         }
         return temp;
     }, [ employees, isSortAscending, searchField, searchValue, sortedField ]);
@@ -110,9 +108,8 @@ export default function DashboardPage() {
     }
 
     const ActiveDashboard = dashboardVariants[ activeVariant ]
-    // TODO: make site more responsive
     return (
-        <div className="w-full ">
+        <div className="w-full">
             <div className="flex justify-between items-start mb-4 px-1 xs:px-4 gap-x-4 sm:gap-x-6 max-h-[60px] sticky
             top-0 w-full bg-gray-200 dark:bg-gray-800 py-2 border border-t-0 rounded-md border-gray-400 z-10">
                 <SearchDropdown/>

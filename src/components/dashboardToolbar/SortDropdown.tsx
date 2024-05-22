@@ -26,9 +26,9 @@ export default function SortDropdown() {
                 </button>
             </div>
             <label htmlFor="sortedField" className="block">
-                <p>Поле сортировки:</p>
+                <p className="md:text-sm">Поле сортировки:</p>
                 <select name="sortedField" id="sortedField"
-                        className="mt-2 dark:bg-gray-600 max-sm:w-24 max-lg:w-32 focus:outline-none"
+                        className="md:mt-1 lg:mt-2 dark:bg-gray-600 max-sm:w-24 max-lg:w-32 focus:outline-none"
                         value={sortedField || "none"}
                         onChange={event => {
                             const newValue = event.currentTarget.value === "none" ? null : event.currentTarget.value;
