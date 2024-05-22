@@ -1,4 +1,4 @@
-import { FaMagnifyingGlass, FaSort } from "react-icons/fa6";
+import { FaMagnifyingGlass } from "react-icons/fa6";
 import { Employee, useEmployeeData } from "../../context/EmployeeContext.tsx";
 import { FaXmark } from "react-icons/fa6";
 

@@ -8,7 +8,7 @@ export default function HomePage() {
             <h2 className="mt-20 mb-10 text-3xl sm:text-5xl font-bold text-center">
                 Управляйте информацией о сотрудниках эффективно и удобно
             </h2>
-            <p className="text-center sm:text-lg mb-6 px-12 text-blue-800 dark:text-purple-300 font-thin">
+            <p className="text-center sm:text-lg mb-6 px-12 text-blue-800 dark:text-purple-300 font-[350]">
                 Наш дашборд предоставляет вам все необходимые инструменты для управления данными сотрудников. Вы
                 можете добавлять, редактировать и просматривать информацию о сотрудниках в реальном времени.
             </p>
