@@ -111,10 +111,9 @@ export default function DashboardPage() {
 
     const ActiveDashboard = dashboardVariants[ activeVariant ]
     // TODO: make site more responsive
-    // TODO: create ToTopButton
     return (
         <div className="w-full ">
-            <div className="flex justify-between items-start mb-4 px-4 gap-x-4 sm:gap-x-6 max-h-[60px] sticky
+            <div className="flex justify-between items-start mb-4 px-1 xs:px-4 gap-x-4 sm:gap-x-6 max-h-[60px] sticky
             top-0 w-full bg-gray-200 dark:bg-gray-800 py-2 border border-t-0 rounded-md border-gray-400 z-10">
                 <SearchDropdown/>
                 <SortDropdown/>
