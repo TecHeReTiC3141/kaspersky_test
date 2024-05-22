@@ -1,4 +1,4 @@
-import { FaSort } from "react-icons/fa6";
+import { FaSort, FaXmark } from "react-icons/fa6";
 import { Employee, useEmployeeData } from "../../context/EmployeeContext.tsx";
 import { FaSortAlphaDownAlt, FaSortAlphaUpAlt } from "react-icons/fa";
 import clsx from "clsx";
@@ -9,15 +9,26 @@ export default function SortDropdown() {
     return (
         <div
             className="w-56 border border-gray-500 rounded-md overflow-hidden transition-all duration-200
-                        h-11 hover:h-48 max-sm:w-10 max-sm:min-w-10 max-sm:hover:w-48 group
-                          text-center z-10 bg-gray-200 dark:bg-gray-800 pt-1.5 flex flex-col gap-y-3 items-center max-sm:text-sm">
-            <h5 className="sm:text-lg font-bold flex items-center gap-x-2">
-                <span className="hidden sm:block group-hover:block">Сортировка</span>
-                <FaSort size={24}/>
-            </h5>
+                        h-11 hover:h-48 max-sm:w-10 max-sm:min-w-10 max-sm:hover:w-48 group relative
+                          text-center z-10 bg-gray-200 dark:bg-gray-800 pt-2 flex flex-col gap-y-2.5 items-center max-sm:text-sm">
+            <div className="flex w-full justify-around items-center">
+
+                <h5 className="sm:text-lg font-bold flex items-center gap-x-2">
+                    <span className="hidden sm:block group-hover:block">Сортировка</span>
+                    <FaSort className="max-sm:group-hover:hidden" size={24}/>
+                </h5>
+                <button className=" p-1 hidden group-hover:block bg-red-400 rounded-md"
+                        onClick={() => {
+                            setSortedField(null);
+                            setIsSortAscending(true);
+                        }}>
+                    <FaXmark size={20}/>
+                </button>
+            </div>
             <label htmlFor="sortedField" className="block">
                 <p>Поле сортировки:</p>
-                <select name="sortedField" id="sortedField" className="mt-2 dark:bg-gray-600 max-sm:w-24 max-lg:w-32 focus:outline-none"
+                <select name="sortedField" id="sortedField"
+                        className="mt-2 dark:bg-gray-600 max-sm:w-24 max-lg:w-32 focus:outline-none"
                         value={sortedField || "none"}
                         onChange={event => {
                             const newValue = event.currentTarget.value === "none" ? null : event.currentTarget.value;

@@ -9,6 +9,7 @@ import { Employee, useEmployeeData } from "./context/EmployeeContext.tsx";
 import { DashboardProps } from "./components/dashboards/Props.ts";
 import SearchDropdown from "./components/dashboardToolbar/SearchDropdown.tsx";
 import SortDropdown from "./components/dashboardToolbar/SortDropdown.tsx";
+import ToTopButton from "./components/ToTopButton.tsx";
 
 
 export const dashboardVariants: Record<string, React.ComponentType<DashboardProps>> = {
@@ -23,7 +24,6 @@ export default function DashboardPage() {
 
     // TODO: add tests (?)
 
-    // TODO: add margins to main container
 
     const {
         employees,
@@ -73,7 +73,7 @@ export default function DashboardPage() {
     }, [ employeesQuery.data, setEmployees ]);
 
     const finalEmployees = useMemo(() => {
-        let temp = [...employees];
+        let temp = [ ...employees ];
         if (searchField !== null && searchValue) {
             const lowerToValue = searchValue.toLowerCase();
             temp = temp.filter(employee => employee[ searchField ]?.toLowerCase()?.includes(lowerToValue));
@@ -114,7 +114,7 @@ export default function DashboardPage() {
     // TODO: create ToTopButton
     return (
         <div className="w-full ">
-            <div className="flex justify-between items-start mb-4 px-4 gap-x-6 max-h-[60px] sticky
+            <div className="flex justify-between items-start mb-4 px-4 gap-x-4 sm:gap-x-6 max-h-[60px] sticky
             top-0 w-full bg-gray-200 dark:bg-gray-800 py-2 border border-t-0 rounded-md border-gray-400 z-10">
                 <SearchDropdown/>
                 <SortDropdown/>
@@ -123,8 +123,10 @@ export default function DashboardPage() {
                 <SelectDashboardVariant active={activeVariant} setActive={setActiveVariant}/>
             </div>
             <div className="w-full px-2">
-                <ActiveDashboard employees={finalEmployees}/>
+                {finalEmployees.length > 0 ? <ActiveDashboard employees={finalEmployees}/> :
+                    <p className="text">Нет сотрудников, удовлетворяющих фильтру поиска</p>}
             </div>
+            <ToTopButton />
         </div>
     )
 }

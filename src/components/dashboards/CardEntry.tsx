@@ -19,7 +19,7 @@ export default function CardEntry({ employee, setIsSelected, isSelected }: Entry
                      [ employee.id ]: !isSelected,
                  }));
              }}>
-            <h5 className="font-bold text-lg">{searchField === "name" && searchValue ? <Highlighter
+            <h5 className="font-bold text-lg text-center">{searchField === "name" && searchValue ? <Highlighter
                 highlightClassName="bg-yellow-400 dark:bg-yellow-500"
                 searchWords={[ searchValue ]}
                 autoEscape={true}

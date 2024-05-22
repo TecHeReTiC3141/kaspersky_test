@@ -5,3 +5,18 @@
 body, #root {
     min-height: 100vh;
 }
+
+.animated-fade {
+    animation-name: fadeFromLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+}
+
+@keyframes fadeFromLeft {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
