@@ -13,7 +13,6 @@ export default function TableEntry({ employee, isSelected, setIsSelected }: Entr
             <td className=""><input className="mx-auto block" type="checkbox"
                                     checked={isSelected} onChange={event => {
                 const check = event.currentTarget?.checked;
-                console.log(event.currentTarget, event.currentTarget?.checked);
                 setIsSelected(prev => ({
                     ...prev,
                     [ employee.id ]: check,

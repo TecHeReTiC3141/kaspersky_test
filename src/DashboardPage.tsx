@@ -94,7 +94,7 @@ export default function DashboardPage() {
     }
 
     if (groupQuery.isError) {
-        console.log("Error fetching groups", groupQuery.error);
+        console.error("Error fetching groups", groupQuery.error);
         throw new Error("Извините, мы не смогли загрузить группы. Попробуйте еще раз через некоторое время");
     }
 
@@ -103,7 +103,7 @@ export default function DashboardPage() {
     }
 
     if (employeesQuery.isError) {
-        console.log("Error fetching employees", employeesQuery.error);
+        console.error("Error fetching employees", employeesQuery.error);
         throw new Error("Извините, мы не смогли загрузить сотрудников. Попробуйте еще раз через некоторое время");
     }
 
