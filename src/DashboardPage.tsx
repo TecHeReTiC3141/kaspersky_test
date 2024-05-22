@@ -72,7 +72,6 @@ export default function DashboardPage() {
     }, [ employeesQuery.data, setEmployees ]);
 
     const finalEmployees = useMemo(() => {
-        // TODO: think about adding tests to this section
         let temp = [...employees];
 
         if (searchField && searchValue) {

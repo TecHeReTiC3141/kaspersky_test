@@ -16,7 +16,7 @@ const links: { text: string, to: string }[] = [
 export default function Header() {
 
     return (
-        <header className="w-full flex items-center border-b border-gray-500 px-3 sm:px-8 py-4 gap-x-3 sm:gap-x-8 shadow mb-4 ">
+        <header className="w-full flex items-center border-b border-gray-500 px-3 sm:px-8 py-4 gap-x-2 xs:gap-x-5 sm:gap-x-8 shadow mb-4 ">
             <Link to="/" className="flex items-center gap-x-3">
 
                 <img src="/logo_tranparent.png" alt="Logo" className="w-14 xs:w-8 md:w-12 object-cover"/>

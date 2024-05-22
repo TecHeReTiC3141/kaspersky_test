@@ -6,7 +6,7 @@ import { DashboardProps } from "./Props.ts";
 export default function TableDashboard({ employees }: DashboardProps) {
 
     const { selected, setSelected } = useEmployeeData();
-    // TODO: think about adding column for position
+
     return (
         <div className="w-full overflow-x-auto">
             <table className="w-full rounded-t-lg overflow-hidden max-lg:text-sm text-nowrap">

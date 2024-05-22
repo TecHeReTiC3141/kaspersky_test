@@ -5,7 +5,7 @@ export default function HomePage() {
 
     return (
         <main className="flex flex-col items-center justify-center flex-grow max-w-5xl mx-auto">
-            <h2 className="mt-20 mb-10 text-3xl sm:text-5xl font-bold text-center">
+            <h2 className="mt-20 mb-10 text-3xl xs:text-4xl sm:text-5xl font-bold text-center">
                 Управляйте информацией о сотрудниках эффективно и удобно
             </h2>
             <p className="text-center sm:text-lg mb-6 px-12 text-blue-800 dark:text-purple-300 font-[350]">

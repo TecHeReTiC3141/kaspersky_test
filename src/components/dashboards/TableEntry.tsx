@@ -9,7 +9,7 @@ export default function TableEntry({ employee, isSelected, setIsSelected }: Entr
 
     return (
         <tr key={employee.id} className={clsx(isSelected ?
-            "bg-blue-200 even:bg-blue-300 dark:bg-blue-800/75 dark:odd:bg-blue-600/75" : "odd:bg-gray-100 dark:odd:bg-gray-600")}>
+            "bg-blue-200 even:bg-blue-300 dark:bg-blue-800/90 dark:odd:bg-blue-600/85" : "odd:bg-gray-100 dark:odd:bg-gray-600")}>
             <td className=""><input className="mx-auto block" type="checkbox"
                                     checked={isSelected} onChange={event => {
                 const check = event.currentTarget?.checked;
