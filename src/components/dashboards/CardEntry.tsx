@@ -34,7 +34,7 @@ export default function CardEntry({ employee, setIsSelected, isSelected }: Entry
                         autoEscape={true}
                         textToHighlight={employee.group || "Unmanaged"}
                     /> : employee.group || "Unmanaged"}</p>
-            <p>{searchField === "phoneNumber" && searchValue ? <Highlighter
+            <p className="max-sm:text-sm">{searchField === "phoneNumber" && searchValue ? <Highlighter
                 highlightClassName="bg-yellow-400 dark:bg-yellow-500"
                 searchWords={[ searchValue ]}
                 autoEscape={true}

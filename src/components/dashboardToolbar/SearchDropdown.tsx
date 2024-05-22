@@ -7,7 +7,7 @@ export default function SearchDropdown() {
     return (
         <div
             className="w-56 border border-gray-500 rounded-md overflow-hidden transition-all duration-200
-                        h-11 hover:h-48 text-center max-sm:w-10 max-sm:hover:w-48 group
+                        h-11 hover:h-48 text-center max-sm:w-10 max-sm:min-w-10 max-sm:hover:w-48 group
                         z-10 bg-gray-200 dark:bg-gray-800 pt-1.5 flex flex-col gap-y-3 items-center max-md:text-sm">
             <h5 className="sm:text-lg font-bold flex items-center gap-x-2">
                 <span className="hidden sm:block group-hover:block">Поиск</span>
@@ -16,7 +16,7 @@ export default function SearchDropdown() {
             <label htmlFor="searchField" className="block">
                 <p>Поле поиска:</p>
                 <select name="searchField" id="searchField"
-                        className="mt-2 dark:bg-gray-600 focus:outline-none  max-sm:w-28" value={searchField || "none"}
+                        className="mt-2 dark:bg-gray-600 focus:outline-none  max-sm:w-28 max-lg:w-32" value={searchField || "none"}
                         onChange={event => {
                             const newValue = event.currentTarget.value === "none" ? null : event.currentTarget.value;
                             setSearchField(newValue as keyof Employee);
@@ -34,7 +34,7 @@ export default function SearchDropdown() {
                 <p>Что нужно найти:</p>
                 <input type="text" placeholder="Поиск..." name="searchValue" value={searchValue}
                        onChange={event => setSearchValue(event.currentTarget.value)}
-                       className="bg-transparent px-2 py-1 mt-2 flex-1 focus:outline-none max-sm:w-28 border border-gray-500 rounded-md"/>
+                       className="bg-transparent px-2 py-1 mt-2 flex-1 focus:outline-none max-sm:w-28 max-lg:w-32 border border-gray-500 rounded-md"/>
             </label>
 
         </div>

@@ -9,7 +9,7 @@ export default function SortDropdown() {
     return (
         <div
             className="w-56 border border-gray-500 rounded-md overflow-hidden transition-all duration-200
-                        h-11 hover:h-48 max-sm:w-10 max-sm:hover:w-48 group
+                        h-11 hover:h-48 max-sm:w-10 max-sm:min-w-10 max-sm:hover:w-48 group
                           text-center z-10 bg-gray-200 dark:bg-gray-800 pt-1.5 flex flex-col gap-y-3 items-center max-sm:text-sm">
             <h5 className="sm:text-lg font-bold flex items-center gap-x-2">
                 <span className="hidden sm:block group-hover:block">Сортировка</span>
@@ -17,7 +17,7 @@ export default function SortDropdown() {
             </h5>
             <label htmlFor="sortedField" className="block">
                 <p>Поле сортировки:</p>
-                <select name="sortedField" id="sortedField" className="mt-2 dark:bg-gray-600 max-sm:w-24 focus:outline-none"
+                <select name="sortedField" id="sortedField" className="mt-2 dark:bg-gray-600 max-sm:w-24 max-lg:w-32 focus:outline-none"
                         value={sortedField || "none"}
                         onChange={event => {
                             const newValue = event.currentTarget.value === "none" ? null : event.currentTarget.value;
@@ -31,9 +31,9 @@ export default function SortDropdown() {
                     <option value="phoneNumber">Номер телефона</option>
                 </select>
             </label>
-            <p className="max-sm:text-sm">Направление сортировки:</p>
+            <p className="md:text-sm ">Направление сортировки:</p>
             <button onClick={() => setIsSortAscending(prev => !prev)}
-                    className="flex gap-3 items-center cursor-pointer">
+                    className="flex gap-x-1 sm:gap-x-3 items-center cursor-pointer">
                 <FaSortAlphaDownAlt size={24}/>
                 <div
                     className="rounded-full w-14 h-8 border-2 border-gray-900 dark:border-white bg-transparent p-2 relative">

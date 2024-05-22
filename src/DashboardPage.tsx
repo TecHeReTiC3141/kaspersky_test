@@ -21,7 +21,9 @@ export default function DashboardPage() {
 
     const [ activeVariant, setActiveVariant ] = useState<keyof typeof dashboardVariants>("table");
 
-    // TODO: add localization for Russian and English
+    // TODO: add tests (?)
+
+    // TODO: add margins to main container
 
     const {
         employees,
@@ -71,21 +73,23 @@ export default function DashboardPage() {
     }, [ employeesQuery.data, setEmployees ]);
 
     const finalEmployees = useMemo(() => {
+        let temp = [...employees];
+        if (searchField !== null && searchValue) {
+            const lowerToValue = searchValue.toLowerCase();
+            temp = temp.filter(employee => employee[ searchField ]?.toLowerCase()?.includes(lowerToValue));
+        }
         if (sortedField !== null) {
-            employees.sort((emp1, emp2) => {
-                if (emp1[ sortedField ] === undefined || emp2[ sortedField ] === undefined) return 0;
+            temp = temp.sort((emp1, emp2) => {
+                if (emp1[ sortedField ] === null) return 1;
+                if (emp2[ sortedField ] === null) return -1;
                 if (isSortAscending && emp1[ sortedField ]! < emp2[ sortedField ]!
                     || !isSortAscending && emp1[ sortedField ]! > emp2[ sortedField ]!) return -1;
                 if (emp1[ sortedField ] === emp2[ sortedField ]) return 0;
                 return 1;
             });
         }
-        if (searchField !== null && searchValue) {
-            const lowerToValue = searchValue.toLowerCase();
-            return employees.filter(employee => employee[searchField]?.toLowerCase()?.includes(lowerToValue));
-        }
-        return employees;
-    }, [employees, isSortAscending, searchField, searchValue, sortedField]);
+        return temp;
+    }, [ employees, isSortAscending, searchField, searchValue, sortedField ]);
 
     if (groupQuery.isLoading) {
         return <Loading text="группы"/>
@@ -109,16 +113,18 @@ export default function DashboardPage() {
     // TODO: make site more responsive
     // TODO: create ToTopButton
     return (
-        <div className="w-full">
+        <div className="w-full ">
             <div className="flex justify-between items-start mb-4 px-4 gap-x-6 max-h-[60px] sticky
             top-0 w-full bg-gray-200 dark:bg-gray-800 py-2 border border-t-0 rounded-md border-gray-400 z-10">
-                <SearchDropdown />
-                <SortDropdown />
-                <h4 className="hidden md:block md:text-lg font-bold mt-1.5">Всего {finalEmployees.length} сотрудников</h4>
+                <SearchDropdown/>
+                <SortDropdown/>
+                <h4 className="hidden md:block lg:text-lg font-bold lg:mt-1.5">Всего {finalEmployees.length} сотрудников</h4>
                 <div className="hidden sm:block flex-1"></div>
                 <SelectDashboardVariant active={activeVariant} setActive={setActiveVariant}/>
             </div>
-            <ActiveDashboard employees={finalEmployees}/>
+            <div className="w-full px-2">
+                <ActiveDashboard employees={finalEmployees}/>
+            </div>
         </div>
     )
 }
